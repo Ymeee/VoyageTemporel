@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Medecin','Secretaire')")
+@DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Admin','Client')")
 @Table(name="compte")
 public abstract class Compte {
 	
@@ -36,7 +36,6 @@ public abstract class Compte {
 	}
 
 	public Compte(Integer id, String login, String password, String nom, String prenom) {
-		super();
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -45,7 +44,6 @@ public abstract class Compte {
 	}
 
 	public Compte(String login, String password, String nom, String prenom) {
-		super();
 		this.login = login;
 		this.password = password;
 		this.nom = nom;
