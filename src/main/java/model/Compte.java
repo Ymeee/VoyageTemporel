@@ -27,10 +27,10 @@ public abstract class Compte {
 	protected String password;
 	
 	@Column(columnDefinition = "VARCHAR(35)", nullable = false)
-	private String nom;
+	protected String nom;
 	
 	@Column(length = 30, nullable = false)
-	private String prenom;
+	protected String prenom;
 	
 	public Compte() {
 	}
