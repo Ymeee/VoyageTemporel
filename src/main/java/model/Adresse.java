@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,9 @@ import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("adresse")
+
+
+@Embeddable
 public class Adresse {
 	
 	@Id

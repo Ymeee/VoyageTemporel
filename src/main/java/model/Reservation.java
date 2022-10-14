@@ -13,12 +13,12 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//SEMI-OBLIGATOIRE pour de l'auto-increment
 	private Integer id;
 	
+	private double prixReel;
+	
 	private Client client; 
 	
 	private Passager passager;
-	
-	private Paiement paiement; 
-	
+		
 	private Voyage voyage;
 	
 	
@@ -26,20 +26,20 @@ public class Reservation {
 	}
 
 
-	public Reservation(Integer id, Client client, Passager passager, Paiement paiement, Voyage voyage) {
+	public Reservation(Integer id, Client client, Passager passager, Voyage voyage, double prixReel) {
 		this.id = id;
 		this.client = client;
 		this.passager = passager;
-		this.paiement = paiement;
 		this.voyage = voyage;
+		this.prixReel = prixReel;
 	}
 
 
-	public Reservation(Client client, Passager passager, Paiement paiement, Voyage voyage) {
+	public Reservation(Client client, Passager passager, Voyage voyage, double prixReel) {
 		this.client = client;
 		this.passager = passager;
-		this.paiement = paiement;
 		this.voyage = voyage;
+		this.prixReel = prixReel;
 	}
 
 
@@ -73,16 +73,6 @@ public class Reservation {
 	}
 
 
-	public Paiement getPaiement() {
-		return paiement;
-	}
-
-
-	public void setPaiement(Paiement paiement) {
-		this.paiement = paiement;
-	}
-
-
 	public Voyage getVoyage() {
 		return voyage;
 	}
@@ -93,11 +83,23 @@ public class Reservation {
 	}
 
 
+	public double getPrixReel() {
+		return prixReel;
+	}
+
+
+	public void setPrixReel(double prixReel) {
+		this.prixReel = prixReel;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id + ", client=" + client + ", passager=" + passager + ", paiement=" + paiement
+		return "Reservation [id=" + id + ", prixReel=" + prixReel + ", client=" + client + ", passager=" + passager
 				+ ", voyage=" + voyage + "]";
 	}
+
+	
 	
 	
 	
