@@ -10,7 +10,7 @@ import dao.IDAOConfirmation;
 import model.Compte;
 import model.Confirmation;
 
-public class DAOConfirmaiton implements IDAOConfirmation {
+public class DAOConfirmation implements IDAOConfirmation {
 	
 	@Override
 	public List<Confirmation> findAll() {
