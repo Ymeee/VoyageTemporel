@@ -1,10 +1,13 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,6 +25,9 @@ public class Adresse {
 	
 	@OneToOne
 	private Client client;
+	
+	@OneToMany(mappedBy="adresse")
+	private List<Voyage> voyages;
 
 	public Adresse(Integer id, String numero, String rue, String cp, String ville, String pays) {
 		super();
