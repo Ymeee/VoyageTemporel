@@ -27,7 +27,6 @@ public class Reservation {
 
 
 	public Reservation(Integer id, Client client, Passager passager, Paiement paiement, Voyage voyage) {
-		super();
 		this.id = id;
 		this.client = client;
 		this.passager = passager;
@@ -37,7 +36,6 @@ public class Reservation {
 
 
 	public Reservation(Client client, Passager passager, Paiement paiement, Voyage voyage) {
-		super();
 		this.client = client;
 		this.passager = passager;
 		this.paiement = paiement;
