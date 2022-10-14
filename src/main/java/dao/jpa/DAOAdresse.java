@@ -5,33 +5,33 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import context.Context;
-import dao.IDAOClient;
-import model.Client;
+import dao.IDAOAdresse;
+import model.Adresse;
 
 
-public class DAOClient implements IDAOClient{
+public class DAOAdresse implements IDAOAdresse{
 	
 	@Override
-	public List<Client> findAll() {
+	public List<Adresse> findAll() {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();
-		List<Client> clients = em.createQuery("from Client").getResultList();
+		List<Adresse> adresses = em.createQuery("from Adresse").getResultList();
 
 		em.close();
 
-		return clients;
+		return adresses;
 	}
 	
 	
 	@Override
-	public Client findById(Integer id) {
+	public Adresse findById(Integer id) {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();		
-		Client m = em.find(Client.class, id);
+		Adresse m = em.find(Adresse.class, id);
 		em.close();
 		return m;
 	}
 
 	@Override
-	public Client save(Client m) {
+	public Adresse save(Adresse m) {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();
 
 		em.getTransaction().begin();
@@ -49,7 +49,7 @@ public class DAOClient implements IDAOClient{
 	@Override
 	public void delete(Integer id) {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();
-		Client m = em.find(Client.class, id);
+		Adresse m = em.find(Adresse.class, id);
 		
 		em.getTransaction().begin();
 
