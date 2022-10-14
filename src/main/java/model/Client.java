@@ -13,16 +13,9 @@ import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("client")
-public class Client {
+public class Client extends Compte {
 	
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String login;
-	private String password;
-	private String nom;
-	private String prenom;
 	private int tel;
 	private String mail;
 	private LocalDate anniversaire;
@@ -38,11 +31,7 @@ public class Client {
 
 	public Client(Integer id, String login, String password, String nom, String prenom, int tel, String mail,
 			LocalDate anniversaire) {
-		this.id = id;
-		this.login = login;
-		this.password = password;
-		this.nom = nom;
-		this.prenom = prenom;
+		super(id, login, password, nom, prenom);
 		this.tel = tel;
 		this.mail = mail;
 		this.anniversaire = anniversaire;
@@ -55,45 +44,7 @@ public class Client {
 				+ reservation + ", adresse=" + adresse + "]";
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+	
 
 	public int getTel() {
 		return tel;
