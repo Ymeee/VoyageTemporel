@@ -29,6 +29,9 @@ public class Adresse {
 	@OneToMany(mappedBy="adresse")
 	private List<Voyage> voyages;
 
+	public Adresse() {
+	}
+	
 	public Adresse(Integer id, String numero, String rue, String cp, String ville, String pays) {
 		super();
 		this.id = id;
