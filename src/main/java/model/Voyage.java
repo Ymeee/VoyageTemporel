@@ -1,5 +1,8 @@
 package model;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +18,7 @@ public class Voyage {
 
 	private Reservation reservation;
 	
+	@Embedded
 	private Adresse adresse; 
 	
 	private Machine machine; 
@@ -25,8 +29,18 @@ public class Voyage {
 	
 	private EtatVoyage etatVoyage; 
 	
+	private LocalDateTime dateDepart;
+	private LocalDateTime dateArrivee;
+	private LocalDateTime dateRetour;
+	
+	private double prix; 
+	
+	public Voyage() {
+	}
+
 	public Voyage(Integer id, Reservation reservation, Adresse adresse, Machine machine, Epoque epoque, Guide guide,
-			EtatVoyage etatVoyage) {
+			EtatVoyage etatVoyage, LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			double prix) {
 		this.id = id;
 		this.reservation = reservation;
 		this.adresse = adresse;
@@ -34,16 +48,25 @@ public class Voyage {
 		this.epoque = epoque;
 		this.guide = guide;
 		this.etatVoyage = etatVoyage;
+		this.dateDepart = dateDepart;
+		this.dateArrivee = dateArrivee;
+		this.dateRetour = dateRetour;
+		this.prix = prix;
 	}
 
 	public Voyage(Reservation reservation, Adresse adresse, Machine machine, Epoque epoque, Guide guide,
-			EtatVoyage etatVoyage) {
+			EtatVoyage etatVoyage, LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			double prix) {
 		this.reservation = reservation;
 		this.adresse = adresse;
 		this.machine = machine;
 		this.epoque = epoque;
 		this.guide = guide;
 		this.etatVoyage = etatVoyage;
+		this.dateDepart = dateDepart;
+		this.dateArrivee = dateArrivee;
+		this.dateRetour = dateRetour;
+		this.prix = prix;
 	}
 
 	public Integer getId() {
@@ -102,11 +125,47 @@ public class Voyage {
 		this.etatVoyage = etatVoyage;
 	}
 
+	public LocalDateTime getDateDepart() {
+		return dateDepart;
+	}
+
+	public void setDateDepart(LocalDateTime dateDepart) {
+		this.dateDepart = dateDepart;
+	}
+
+	public LocalDateTime getDateArrivee() {
+		return dateArrivee;
+	}
+
+	public void setDateArrivee(LocalDateTime dateArrivee) {
+		this.dateArrivee = dateArrivee;
+	}
+
+	public LocalDateTime getDateRetour() {
+		return dateRetour;
+	}
+
+	public void setDateRetour(LocalDateTime dateRetour) {
+		this.dateRetour = dateRetour;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
 	@Override
 	public String toString() {
 		return "Voyage [id=" + id + ", reservation=" + reservation + ", adresse=" + adresse + ", machine=" + machine
-				+ ", epoque=" + epoque + ", guide=" + guide + ", etatVoyage=" + etatVoyage + "]";
+				+ ", epoque=" + epoque + ", guide=" + guide + ", etatVoyage=" + etatVoyage + ", dateDepart="
+				+ dateDepart + ", dateArrivee=" + dateArrivee + ", dateRetour=" + dateRetour + ", prix=" + prix + "]";
 	}
+	
+	
+	
 	
 	
 	
