@@ -7,32 +7,34 @@ import javax.persistence.Query;
 
 import context.Context;
 import dao.IDAOAdmin;
+import dao.IDAOClient;
 import model.Admin;
+import model.Client;
 
 
-public class DAOAdmin implements IDAOAdmin{
+public class DAOClient implements IDAOClient{
 	
 	@Override
-	public List<Admin> findAll() {
+	public List<Client> findAll() {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();
-		List<Admin> admins = em.createQuery("from Admin").getResultList();
+		List<Client> clients = em.createQuery("from Client").getResultList();
 
 		em.close();
 
-		return admins;
+		return clients;
 	}
 	
 	
 	@Override
-	public Admin findById(Integer id) {
+	public Client findById(Integer id) {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();		
-		Admin m = em.find(Admin.class, id);
+		Client m = em.find(Client.class, id);
 		em.close();
 		return m;
 	}
 
 	@Override
-	public Admin save(Admin m) {
+	public Client save(Client m) {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();
 
 		em.getTransaction().begin();
@@ -50,7 +52,7 @@ public class DAOAdmin implements IDAOAdmin{
 	@Override
 	public void delete(Integer id) {
 		EntityManager em = Context.getSingleton().getEmf().createEntityManager();
-		Admin m = em.find(Admin.class, id);
+		Client m = em.find(Client.class, id);
 		
 		em.getTransaction().begin();
 
