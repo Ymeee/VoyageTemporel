@@ -3,11 +3,13 @@ package model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -15,15 +17,19 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("client")
 public class Client extends Compte {
 	
-
+	@Column(nullable = false,unique=true)
 	private int tel;
+	
+	@Column(length = 35,nullable = false,unique=true)
 	private String mail;
+	
+	@Column(nullable = false)
 	private LocalDate anniversaire;
 	
 	@OneToMany(mappedBy="client")
 	private List<Reservation> reservation;
 	
-	@OneToOne
+	@ManyToOne
 	private Adresse adresse;
 	
 	public Client() {

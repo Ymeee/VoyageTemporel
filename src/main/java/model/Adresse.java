@@ -33,7 +33,6 @@ public class Adresse {
 	}
 	
 	public Adresse(Integer id, String numero, String rue, String cp, String ville, String pays) {
-		super();
 		this.id = id;
 		this.numero = numero;
 		this.rue = rue;
