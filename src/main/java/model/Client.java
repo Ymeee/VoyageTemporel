@@ -18,8 +18,8 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("client")
 public class Client extends Compte {
 	
-	@Column(nullable = false,unique=true)
-	private int tel;
+	@Column(length = 10,nullable = false,unique=true)
+	private String tel;
 	
 	@Column(length = 35,nullable = false,unique=true)
 	private String mail;
@@ -37,7 +37,7 @@ public class Client extends Compte {
 	public Client() {
 	}
 
-	public Client(Integer id, String login, String password, String nom, String prenom, int tel, String mail,
+	public Client(Integer id, String login, String password, String nom, String prenom, String tel, String mail,
 			LocalDate anniversaire) {
 		super(id, login, password, nom, prenom);
 		this.tel = tel;
@@ -54,11 +54,11 @@ public class Client extends Compte {
 
 	
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 

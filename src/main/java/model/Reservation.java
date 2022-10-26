@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ public class Reservation {
 	private Integer id;
 	
 	private double prixReel;
-	
+	@Column(nullable = false)
 	private Client client; 
 	
 	private Passager passager;

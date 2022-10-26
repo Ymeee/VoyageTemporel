@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,29 +17,32 @@ public class Voyage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//SEMI-OBLIGATOIRE pour de l'auto-increment
 	private Integer id;
 
+	@Column(nullable = false)
 	private Reservation reservation;
 	
 	@Embedded
 	private Adresse adresse; 
-	
+	@Column(nullable = false)
 	private Machine machine; 
-	
+	@Column(nullable = false)
 	private Epoque epoque;
 	
 	private Guide guide;
-	
+	@Column(nullable = false)
 	private EtatVoyage etatVoyage; 
-	
+	@Column(nullable = false)
 	private LocalDateTime dateDepart;
+	@Column(nullable = false)
 	private LocalDateTime dateArrivee;
+	@Column(nullable = false)
 	private LocalDateTime dateRetour;
-	
+	@Column(nullable = false)
 	private double prix; 
 	
 	public Voyage() {
 	}
 
-	public Voyage(Integer id, Reservation reservation, Adresse adresse, Machine machine, Epoque epoque, Guide guide,
+	public Voyage(Integer id, Reservation reservation, Adresse adresse, Machine machine, Epoque epoque,
 			EtatVoyage etatVoyage, LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.id = id;
@@ -46,7 +50,6 @@ public class Voyage {
 		this.adresse = adresse;
 		this.machine = machine;
 		this.epoque = epoque;
-		this.guide = guide;
 		this.etatVoyage = etatVoyage;
 		this.dateDepart = dateDepart;
 		this.dateArrivee = dateArrivee;
@@ -54,14 +57,13 @@ public class Voyage {
 		this.prix = prix;
 	}
 
-	public Voyage(Reservation reservation, Adresse adresse, Machine machine, Epoque epoque, Guide guide,
+	public Voyage(Reservation reservation, Adresse adresse, Machine machine, Epoque epoque,
 			EtatVoyage etatVoyage, LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.reservation = reservation;
 		this.adresse = adresse;
 		this.machine = machine;
 		this.epoque = epoque;
-		this.guide = guide;
 		this.etatVoyage = etatVoyage;
 		this.dateDepart = dateDepart;
 		this.dateArrivee = dateArrivee;

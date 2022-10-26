@@ -2,6 +2,7 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
@@ -21,10 +22,15 @@ public class Adresse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(length = 20,nullable = false)
 	private String numero;
+	@Column(length = 35,nullable = false)
 	private String rue;
+	@Column(length = 15,nullable = false)
 	private String cp;
+	@Column(length = 35,nullable = false)
 	private String ville;
+	@Column(length = 20,nullable = false)
 	private String pays;
 	
 	@OneToOne
