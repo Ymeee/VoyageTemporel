@@ -1,10 +1,14 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity //OBLIGATOIRE
@@ -18,7 +22,9 @@ public class Reservation {
 	@Column(nullable = false)
 	private Client client; 
 	
-	private Passager passager;
+	@ManyToMany
+	@JoinTable(name="passager")
+	private List<Passager> passager;
 		
 	private Voyage voyage;
 	
@@ -31,7 +37,7 @@ public class Reservation {
 	}
 
 
-	public Reservation(Integer id, Client client, Passager passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
+	public Reservation(Integer id, Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
 		this.id = id;
 		this.client = client;
 		this.passager = passager;
@@ -41,7 +47,7 @@ public class Reservation {
 	}
 
 
-	public Reservation(Client client, Passager passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
+	public Reservation(Client client, List<Passager> passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
 		this.client = client;
 		this.passager = passager;
 		this.voyage = voyage;
@@ -70,12 +76,12 @@ public class Reservation {
 	}
 
 
-	public Passager getPassager() {
+	public List<Passager> getPassager() {
 		return passager;
 	}
 
 
-	public void setPassager(Passager passager) {
+	public void setPassager(List<Passager> passager) {
 		this.passager = passager;
 	}
 
@@ -114,6 +120,8 @@ public class Reservation {
 	public void setEtatVoyage(EtatVoyage etatVoyage) {
 		this.etatVoyage = etatVoyage;
 	}
+	
+	
 
 
 	@Override
