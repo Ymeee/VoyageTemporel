@@ -22,25 +22,31 @@ public class Reservation {
 		
 	private Voyage voyage;
 	
+	private Guide guide;
+	@Column(nullable = false)
+	private EtatVoyage etatVoyage; 
+	
 	
 	public Reservation() {
 	}
 
 
-	public Reservation(Integer id, Client client, Passager passager, Voyage voyage, double prixReel) {
+	public Reservation(Integer id, Client client, Passager passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
 		this.id = id;
 		this.client = client;
 		this.passager = passager;
 		this.voyage = voyage;
 		this.prixReel = prixReel;
+		this.etatVoyage = etatVoyage;
 	}
 
 
-	public Reservation(Client client, Passager passager, Voyage voyage, double prixReel) {
+	public Reservation(Client client, Passager passager, Voyage voyage, double prixReel, EtatVoyage etatVoyage) {
 		this.client = client;
 		this.passager = passager;
 		this.voyage = voyage;
 		this.prixReel = prixReel;
+		this.etatVoyage = etatVoyage;
 	}
 
 
@@ -91,6 +97,22 @@ public class Reservation {
 
 	public void setPrixReel(double prixReel) {
 		this.prixReel = prixReel;
+	}
+	
+	public Guide getGuide() {
+		return guide;
+	}
+
+	public void setGuide(Guide guide) {
+		this.guide = guide;
+	}
+
+	public EtatVoyage getEtatVoyage() {
+		return etatVoyage;
+	}
+
+	public void setEtatVoyage(EtatVoyage etatVoyage) {
+		this.etatVoyage = etatVoyage;
 	}
 
 

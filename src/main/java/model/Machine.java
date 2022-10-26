@@ -19,11 +19,23 @@ public class Machine {
 	private Integer id;
 	@Column(name="Date Machine",nullable = false)
 	private LocalDate dateMachine;
+
+	private TypeMachine typeMachine;
+	private EtatMachine etatMachine;
+
 	
-	public Machine(Integer id, LocalDate dateMachine) {
+	
+	public Machine(Integer id, LocalDate dateMachine, TypeMachine typeMachine, EtatMachine etatMachine) {
 		this.id = id;
 		this.dateMachine = dateMachine;
+		this.typeMachine = typeMachine;
+		this.etatMachine = etatMachine;
 	}
+	
+	public Machine(LocalDate dateMachine) {
+		this.dateMachine = dateMachine;
+	}
+	
 	public Machine() {}
 	public Integer getId() {
 		return id;
@@ -37,6 +49,23 @@ public class Machine {
 	public void setDateMachine(LocalDate dateMachine) {
 		this.dateMachine = dateMachine;
 	}
+
+	public TypeMachine getTypeMachine() {
+		return typeMachine;
+	}
+
+	public void setTypeMachine(TypeMachine typeMachine) {
+		this.typeMachine = typeMachine;
+	}
+
+	public EtatMachine getEtatMachine() {
+		return etatMachine;
+	}
+
+	public void setEtatMachine(EtatMachine etatMachine) {
+		this.etatMachine = etatMachine;
+	}
+	
 	
 
 }
