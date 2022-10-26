@@ -1,5 +1,6 @@
 package service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,16 +54,13 @@ public class VoyageService {
 		if (voyage.getEpoque() == null) {
 			throw new VoyageException("probleme epoque");
 		}
-		if (voyage.getEtatVoyage() == null) {
-			throw new VoyageException("probleme voyage");
-		}
-		if (voyage.getDateDepart() == null) {
+		if (voyage.getDateDepart() == null || voyage.getDateDepart().isBefore(LocalDateTime.now())) {
 			throw new VoyageException("probleme date depart (present)");
 		}
-		if (voyage.getDateArrivee() == null) {
+		if (voyage.getDateArrivee() == null || voyage.getDateArrivee().isBefore(voyage.getDateRetour())) {
 			throw new VoyageException("probleme date arrivee (passe)");
 		}
-		if (voyage.getDateRetour() == null) {
+		if (voyage.getDateRetour() == null || voyage.getDateRetour().isAfter(voyage.getDateArrivee())) {
 			throw new VoyageException("probleme date retour (passe)");
 		}
 		return voyageRepo.save(voyage);

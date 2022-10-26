@@ -1,13 +1,17 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity //OBLIGATOIRE
@@ -17,14 +21,16 @@ public class Voyage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//SEMI-OBLIGATOIRE pour de l'auto-increment
 	private Integer id;
 
-	@Column(nullable = false)
-	private Reservation reservation;
+	@OneToMany(mappedBy = "voyage")
+	private List<Reservation> reservation;
 	
-	@Embedded
+	@ManyToOne
 	private Adresse adresse; 
-	@Column(nullable = false)
+	
+	@ManyToOne
 	private Machine machine; 
 	@Column(nullable = false)
+	@Enumerated
 	private Epoque epoque;
 	
 	@Column(nullable = false)
@@ -39,7 +45,7 @@ public class Voyage {
 	public Voyage() {
 	}
 
-	public Voyage(Integer id, Reservation reservation, Adresse adresse, Machine machine, Epoque epoque,
+	public Voyage(Integer id, List<Reservation> reservation, Adresse adresse, Machine machine, Epoque epoque,
 			LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.id = id;
@@ -53,7 +59,7 @@ public class Voyage {
 		this.prix = prix;
 	}
 
-	public Voyage(Reservation reservation, Adresse adresse, Machine machine, Epoque epoque,
+	public Voyage(List<Reservation> reservation, Adresse adresse, Machine machine, Epoque epoque,
 			LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.reservation = reservation;
@@ -74,11 +80,11 @@ public class Voyage {
 		this.id = id;
 	}
 
-	public Reservation getReservation() {
+	public List<Reservation> getReservation() {
 		return reservation;
 	}
 
-	public void setReservation(Reservation reservation) {
+	public void setReservation(List<Reservation> reservation) {
 		this.reservation = reservation;
 	}
 

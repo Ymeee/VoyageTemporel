@@ -33,8 +33,8 @@ public class Adresse {
 	@Column(length = 20,nullable = false)
 	private String pays;
 	
-	@OneToOne
-	private Client client;
+	@OneToMany(mappedBy = "adresse")
+	private List<Client> client;
 	
 	@OneToMany(mappedBy="adresse")
 	private List<Voyage> voyages;
@@ -105,11 +105,11 @@ public class Adresse {
 		this.pays = pays;
 	}
 
-	public Client getClient() {
+	public List<Client> getClient() {
 		return client;
 	}
 
-	public void setClient(Client client) {
+	public void setClient(List<Client> client) {
 		this.client = client;
 	}
 	

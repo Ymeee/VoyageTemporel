@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity //OBLIGATOIRE
@@ -19,17 +21,20 @@ public class Reservation {
 	private Integer id;
 	
 	private double prixReel;
-	@Column(nullable = false)
+	@ManyToOne
 	private Client client; 
 	
 	@ManyToMany
-	@JoinTable(name="passager")
+	@JoinTable(name="reservation_passager")
 	private List<Passager> passager;
-		
+	
+	@ManyToOne
 	private Voyage voyage;
 	
+	@Enumerated
 	private Guide guide;
 	@Column(nullable = false)
+	@Enumerated
 	private EtatVoyage etatVoyage; 
 	
 	

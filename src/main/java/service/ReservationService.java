@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import exception.ReservationException;
+import exception.VoyageException;
 import exception.IdException;
 import model.Reservation;
 import repository.ReservationRepository;
@@ -44,7 +45,9 @@ public class ReservationService {
 		if (reservation.getClient() == null) {
 			throw new ReservationException("probleme client");
 		}
-		
+		if (reservation.getEtatVoyage() == null) {
+			throw new ReservationException("probleme voyage");
+		}
 		return reservationRepo.save(reservation);
 	}
 

@@ -45,6 +45,12 @@ public class MachineService {
 		if (machine.getDateMachine() == null) {
 			throw new MachineException("probleme date machine");
 		}
+		if (machine.getTypeMachine() == null) {
+			throw new MachineException("probleme type machine");
+		}
+		if (machine.getEtatMachine() == null) {
+			throw new MachineException("probleme etat machine");
+		}
 		return machineRepo.save(machine);
 	}
 

@@ -30,7 +30,6 @@ public class Client extends Compte {
 	@OneToMany(mappedBy="client")
 	private List<Reservation> reservation;
 	
-	@Embedded
 	@ManyToOne
 	private Adresse adresse;
 	

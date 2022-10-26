@@ -12,8 +12,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import config.JpaConfig;
+import model.EtatMachine;
 import model.Machine;
+import model.TypeMachine;
 import service.MachineService;
+import java.time.LocalDate;
+
 
 
 @ExtendWith(SpringExtension.class)
@@ -34,15 +38,9 @@ class MachineServiceTest {
 	@Commit
 	@Disabled
 	void initMachine() {
-		machineSrv.create(new Machine("2020-06-25"));
+		machineSrv.create(new Machine(LocalDate.parse("2020-06-25"),TypeMachine.TARDIS,EtatMachine.Disponible));
 	}
 
-	@Test
-	void creationMachineTest() {
-		Produit produit = new Produit("aaa", 1.5, null);
-		produit = produitSrv.create(produit);
-		assertNotNull(produit.getId());
-		assertNotNull(produitSrv.findById(produit.getId()));
-	}
+	
 
 }

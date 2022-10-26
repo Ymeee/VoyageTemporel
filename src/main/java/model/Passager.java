@@ -28,7 +28,7 @@ import javax.persistence.Table;
 		private String prenom;
 		private int age;
 		
-		@ManyToMany(mappedBy="reservation")
+		@ManyToMany(mappedBy="passager")
 		private List<Reservation> reservation;
 		
 		public Passager() {
