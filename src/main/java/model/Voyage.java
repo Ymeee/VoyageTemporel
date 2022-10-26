@@ -27,9 +27,6 @@ public class Voyage {
 	@Column(nullable = false)
 	private Epoque epoque;
 	
-	private Guide guide;
-	@Column(nullable = false)
-	private EtatVoyage etatVoyage; 
 	@Column(nullable = false)
 	private LocalDateTime dateDepart;
 	@Column(nullable = false)
@@ -43,14 +40,13 @@ public class Voyage {
 	}
 
 	public Voyage(Integer id, Reservation reservation, Adresse adresse, Machine machine, Epoque epoque,
-			EtatVoyage etatVoyage, LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.id = id;
 		this.reservation = reservation;
 		this.adresse = adresse;
 		this.machine = machine;
 		this.epoque = epoque;
-		this.etatVoyage = etatVoyage;
 		this.dateDepart = dateDepart;
 		this.dateArrivee = dateArrivee;
 		this.dateRetour = dateRetour;
@@ -58,13 +54,12 @@ public class Voyage {
 	}
 
 	public Voyage(Reservation reservation, Adresse adresse, Machine machine, Epoque epoque,
-			EtatVoyage etatVoyage, LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
+			LocalDateTime dateDepart, LocalDateTime dateArrivee, LocalDateTime dateRetour,
 			double prix) {
 		this.reservation = reservation;
 		this.adresse = adresse;
 		this.machine = machine;
 		this.epoque = epoque;
-		this.etatVoyage = etatVoyage;
 		this.dateDepart = dateDepart;
 		this.dateArrivee = dateArrivee;
 		this.dateRetour = dateRetour;
@@ -111,21 +106,6 @@ public class Voyage {
 		this.epoque = epoque;
 	}
 
-	public Guide getGuide() {
-		return guide;
-	}
-
-	public void setGuide(Guide guide) {
-		this.guide = guide;
-	}
-
-	public EtatVoyage getEtatVoyage() {
-		return etatVoyage;
-	}
-
-	public void setEtatVoyage(EtatVoyage etatVoyage) {
-		this.etatVoyage = etatVoyage;
-	}
 
 	public LocalDateTime getDateDepart() {
 		return dateDepart;
@@ -162,7 +142,7 @@ public class Voyage {
 	@Override
 	public String toString() {
 		return "Voyage [id=" + id + ", reservation=" + reservation + ", adresse=" + adresse + ", machine=" + machine
-				+ ", epoque=" + epoque + ", guide=" + guide + ", etatVoyage=" + etatVoyage + ", dateDepart="
+				+ ", epoque=" + epoque + ", dateDepart="
 				+ dateDepart + ", dateArrivee=" + dateArrivee + ", dateRetour=" + dateRetour + ", prix=" + prix + "]";
 	}
 	

@@ -11,10 +11,8 @@ import javax.persistence.Table;
 
 
 	@Entity
-	@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-
 	@Table(name="passager")
-	public abstract class Passager {
+	public class Passager {
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
